@@ -8,6 +8,7 @@ var express = require('express'),
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(methodOverride());
+app.use('/', express.static(__dirname + '/../client'));
 
 var routesProyectos = require('./routes/proyectos.js')(app);
 
