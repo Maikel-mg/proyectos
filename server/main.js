@@ -1,19 +1,13 @@
 var express = require('express'),
     bodyParser = require('body-parser'),
     methodOverride = require('method-override'),
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+    app = express();
 
-var app = express();
-
+// middleware
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(methodOverride());
-
-var router = express.Router();
-router.get('/', function (req, res) {
-  res.send('Hello world');
-});
-app.use(router);
 
 var routesProyectos = require('./routes/proyectos.js')(app);
 
