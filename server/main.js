@@ -2,12 +2,14 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     methodOverride = require('method-override'),
     mongoose = require('mongoose'),
+    morgan = require('morgan'),
     app = express();
 
 // middleware
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(methodOverride());
+app.use(morgan('dev'))
 app.use('/', express.static(__dirname + '/../client'));
 
 var routesProyectos = require('./routes/proyectos.js')(app);
